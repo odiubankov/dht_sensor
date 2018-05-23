@@ -25,7 +25,7 @@ int main()
     std::cout << "Raspberry Pi DHT11/DHT22 temperature/humidity test" << std::endl;
 
     raspby::MemoryMappedIO memoryMappedIO;
-    raspby::GpioPin pin{CONNECTED_PIN};
+    auto pin = raspby::GpioPin::create<CONNECTED_PIN>();
     dht::DhtSensor11 sensor{memoryMappedIO, pin};
     for (int i = 0; i < READING_CNT; ++i)
     {
